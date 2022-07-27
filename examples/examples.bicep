@@ -38,7 +38,7 @@ module kvPublicStandardRBAC '../main.bicep' = {
   params: {
     location: location
     kv_enable_rbac: true
-    kv_n: take('kv-standard-public-rbac-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('${take('kv-standard-public-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'standard'
   }
 }
@@ -48,7 +48,7 @@ module kvPublicPremiumRBAC'../main.bicep' = {
   params: {
     location: location
     kv_enable_rbac: true
-    kv_n: take('kv-premium-public-rbac-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('${take('kv-premium-public-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'premium'
   }
 }
