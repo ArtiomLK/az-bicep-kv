@@ -13,42 +13,84 @@ param location string = 'eastus2'
 // ------------------------------------------------------------------------------------------------
 // KeyVault Deployment Examples
 // ------------------------------------------------------------------------------------------------
-module kvpublicstandard '../main.bicep' = {
-  name: 'kv-standard-public'
+module kvPubStandard '../main.bicep' = {
+  name: 'kv-stand-pub'
   params: {
     location: location
     kv_enable_rbac: false
-    kv_n: take('kv-standard-public-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('kv-stand-pub-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'standard'
   }
 }
 
-module kvpublicpremium'../main.bicep' = {
-  name: 'kv-premium-public'
+module kvPubPrem'../main.bicep' = {
+  name: 'kv-prem-pub'
   params: {
     location: location
     kv_enable_rbac: false
-    kv_n: take('kv-premium-public-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('kv-prem-pub-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'premium'
   }
 }
 
-module kvPublicStandardRBAC '../main.bicep' = {
-  name: 'kv-standard-public-rbac'
+module kvPubStandardRBAC '../main.bicep' = {
+  name: 'kv-stand-pub-rbac'
   params: {
     location: location
     kv_enable_rbac: true
-    kv_n: take('${take('kv-standard-public-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('${take('kv-stand-pub-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'standard'
   }
 }
 
-module kvPublicPremiumRBAC'../main.bicep' = {
-  name: 'kv-premium-public-rbac'
+module kvPubPremRBAC'../main.bicep' = {
+  name: 'kv-prem-pub-rbac'
   params: {
     location: location
     kv_enable_rbac: true
-    kv_n: take('${take('kv-premium-public-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_n: take('${take('kv-prem-pub-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_sku: 'premium'
+  }
+}
+
+// private
+
+module kvPrivStandard '../main.bicep' = {
+  name: 'kv-stand-priv'
+  params: {
+    location: location
+    kv_enable_rbac: false
+    kv_n: take('kv-stand-priv-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_sku: 'standard'
+  }
+}
+
+module kvPrivPrem'../main.bicep' = {
+  name: 'kv-prem-priv'
+  params: {
+    location: location
+    kv_enable_rbac: false
+    kv_n: take('kv-prem-priv-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_sku: 'premium'
+  }
+}
+
+module kvPrivStandardRBAC '../main.bicep' = {
+  name: 'kv-stand-priv-rbac'
+  params: {
+    location: location
+    kv_enable_rbac: true
+    kv_n: take('${take('kv-stand-priv-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
+    kv_sku: 'standard'
+  }
+}
+
+module kvPrivPremRBAC'../main.bicep' = {
+  name: 'kv-prem-priv-rbac'
+  params: {
+    location: location
+    kv_enable_rbac: true
+    kv_n: take('${take('kv-prem-priv-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'premium'
   }
 }

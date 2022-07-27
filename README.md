@@ -20,4 +20,22 @@ az deployment group create \
 --template-file examples/examples.bicep
 ```
 
+## Delete and Purge KeyVaults
+
+```bash
+# Delete all Resources in a resource group
+rg_n='rg-azure-bicep-key-vault'; echo $rg_n
+
+for res in `az resource list -g $rg_n`
+do
+  echo "res: $res";
+  echo "";
+done
+# Delete KeyVaults
+
+# Purge KeyVaults
+
+az keyvault purge --name $kv_n --location $l --no-wait
+```
+
 [1]: ./examples/examples.bicep
