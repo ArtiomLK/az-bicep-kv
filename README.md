@@ -1,5 +1,7 @@
 # Azure Key Vault
 
+[![DEV - Deploy Azure Resource](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml)
+
 [Reference examples][1]
 
 ## Locally test Azure Bicep Modules
