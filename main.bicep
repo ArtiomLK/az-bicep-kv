@@ -36,6 +36,7 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
       family: 'A'
     }
     tenantId: subscription().tenantId
+    accessPolicies: []
   }
   tags: tags
 }
