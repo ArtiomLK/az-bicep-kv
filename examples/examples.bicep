@@ -54,7 +54,6 @@ module kvPubPremRBAC'../main.bicep' = {
 }
 
 // private
-
 module kvPrivStandard '../main.bicep' = {
   name: 'kv-stand-priv'
   params: {
