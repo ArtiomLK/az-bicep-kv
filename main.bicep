@@ -63,7 +63,7 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-06-01' = if (!
 }
 
 resource zoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2020-08-01' = if (!empty(snet_kv_pe_id))  {
-  name: '${privateEndpoint.name}/vault-PrivateDnsZoneGroup'
+  name: '${privateEndpoint.name}/default'
   properties:{
     privateDnsZoneConfigs: [
       {

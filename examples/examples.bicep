@@ -168,7 +168,7 @@ module kvStandardPublicPeRBAC '../main.bicep' = {
   params: {
     location: location
     kv_enable_rbac: true
-    kv_n: take('${take('stand-pub-rbac-pe-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
+    kv_n: take('${take('stand-pub-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
     snet_kv_pe_id: vnetApp.properties.subnets[0].id
     pdnsz_kv_id: pdnsz.id
