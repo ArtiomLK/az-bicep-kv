@@ -62,6 +62,7 @@ module kvPrivStandard '../main.bicep' = {
     kv_enable_rbac: false
     kv_n: take('kv-stand-priv-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'standard'
+    kv_enable_public_access: 'dissabled'
   }
 }
 
@@ -72,6 +73,7 @@ module kvPrivPrem'../main.bicep' = {
     kv_enable_rbac: false
     kv_n: take('kv-prem-priv-${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'premium'
+    kv_enable_public_access: 'dissabled'
   }
 }
 
@@ -82,6 +84,7 @@ module kvPrivStandardRBAC '../main.bicep' = {
     kv_enable_rbac: true
     kv_n: take('${take('kv-stand-priv-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'standard'
+    kv_enable_public_access: 'dissabled'
   }
 }
 
@@ -92,5 +95,6 @@ module kvPrivPremRBAC'../main.bicep' = {
     kv_enable_rbac: true
     kv_n: take('${take('kv-prem-priv-rbac-', 23)}${guid(subscription().id, resourceGroup().id, tags.env)}', 24)
     kv_sku: 'premium'
+    kv_enable_public_access: 'dissabled'
   }
 }
