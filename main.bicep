@@ -24,11 +24,11 @@ param kv_sku string
 param kv_enable_rbac bool
 
 @allowed([
-  'dissabled'
-  'enabled'
+  'Dissabled'
+  'Enabled'
 ])
 @description('Enable public network access')
-param kv_enable_public_access string = 'enabled'
+param kv_enable_public_access string = 'Enabled'
 // var kv_enable_public_access_var = kv_enable_public_access ? ''
 
 // @description('Subnet ID to enable KeyVault private endpoints')
