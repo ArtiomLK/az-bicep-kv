@@ -53,6 +53,11 @@ resource privateEndpoint 'Microsoft.Network/privateEndpoints@2020-06-01' = if (!
           groupIds: [
             'vault'
           ]
+          privateLinkServiceConnectionState: {
+            status: 'Approved'
+            description: 'Auto-Approved'
+            actionsRequired: 'None'
+          }
         }
       }
     ]
