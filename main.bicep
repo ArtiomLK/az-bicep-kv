@@ -67,7 +67,7 @@ resource zoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2020
   properties:{
     privateDnsZoneConfigs: [
       {
-        name: 'privatelink.${environment().suffixes.keyvaultDns}'
+        name: 'privatelink.vaultcore.azure.net'
         properties:{
           privateDnsZoneId: pdnsz_kv_id
         }
