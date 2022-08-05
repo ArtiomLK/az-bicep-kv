@@ -134,7 +134,7 @@ resource vnetApp 'Microsoft.Network/virtualNetworks@2021-02-01' = {
 }
 
 resource pdnsz 'Microsoft.Network/privateDnsZones@2020-06-01' = {
-  name: 'privatelink${environment().suffixes.keyvaultDns}'
+  name: 'privatelink.vaultcore.azure.net'
   location: 'global'
   tags: tags
 }
