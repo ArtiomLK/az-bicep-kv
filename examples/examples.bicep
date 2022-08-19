@@ -17,6 +17,7 @@ module kvStandardPublic '../main.bicep' = {
   name: 'stand-pub'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('stand-pub-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-','')}', 24)
     kv_sku: 'standard'
@@ -27,6 +28,7 @@ module kvPremiumPublic'../main.bicep' = {
   name: 'prem-pub'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('prem-pub-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
@@ -37,6 +39,7 @@ module kvStandardPublicRBAC '../main.bicep' = {
   name: 'stand-pub-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('stand-pub-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
@@ -47,6 +50,7 @@ module kvPremiumPublicRBAC'../main.bicep' = {
   name: 'prem-pub-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('prem-pub-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
@@ -60,10 +64,11 @@ module kvStandardPrivate '../main.bicep' = {
   name: 'stand-priv'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('stand-priv-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
   }
 }
 
@@ -71,10 +76,11 @@ module kvPremiumPrivate'../main.bicep' = {
   name: 'prem-priv'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('prem-priv-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
   }
 }
 
@@ -82,10 +88,11 @@ module kvStandardPrivateRBAC '../main.bicep' = {
   name: 'stand-priv-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('stand-priv-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
   }
 }
 
@@ -93,10 +100,11 @@ module kvPremiumPrivateRBAC'../main.bicep' = {
   name: 'prem-priv-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('prem-priv-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
   }
 }
 
@@ -105,7 +113,7 @@ module kvPremiumPrivateRBAC'../main.bicep' = {
 // ------------------------------------------------------------------------------------------------
 var subnets = [
   {
-    name: 'snet-pe-azure-bicep-app-service'
+    name: 'snet-pe'
     subnetPrefix: '192.160.0.0/24'
     privateEndpointNetworkPolicies: 'Disabled'
     delegations: []
@@ -113,7 +121,7 @@ var subnets = [
 ]
 
 resource vnetApp 'Microsoft.Network/virtualNetworks@2021-02-01' = {
-  name: 'vnet-azure-bicep-app-service'
+  name: 'vnet-kv-bicep'
   location: location
   tags: tags
   properties: {
@@ -143,6 +151,7 @@ module kvStandardPublicPe '../main.bicep' = {
   name: 'stand-pub-pe'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('stand-pub-pe-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
@@ -155,6 +164,7 @@ module kvPremiumPublicPe'../main.bicep' = {
   name: 'prem-pub-pe'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('prem-pub-pe-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
@@ -167,6 +177,7 @@ module kvStandardPublicPeRBAC '../main.bicep' = {
   name: 'stand-pub-pe-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('stand-pub-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
@@ -179,6 +190,7 @@ module kvPremiumPublicPeRBAC'../main.bicep' = {
   name: 'prem-pub-pe-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('prem-pub-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
@@ -194,10 +206,11 @@ module kvStandardPrivatePe '../main.bicep' = {
   name: 'stand-priv-pe'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('stand-priv-pe-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
     snet_kv_pe_id: vnetApp.properties.subnets[0].id
     pdnsz_kv_id: pdnsz.id
   }
@@ -207,10 +220,11 @@ module kvPremiumPrivatePe'../main.bicep' = {
   name: 'prem-priv-pe'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: false
     kv_n: take('${take('prem-priv-pe-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
     snet_kv_pe_id: vnetApp.properties.subnets[0].id
     pdnsz_kv_id: pdnsz.id
   }
@@ -220,10 +234,11 @@ module kvStandardPrivatePeRBAC '../main.bicep' = {
   name: 'stand-priv-pe-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('stand-priv-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'standard'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
     snet_kv_pe_id: vnetApp.properties.subnets[0].id
     pdnsz_kv_id: pdnsz.id
   }
@@ -233,10 +248,11 @@ module kvPremiumPrivatePeRBAC'../main.bicep' = {
   name: 'prem-priv-pe-rbac'
   params: {
     location: location
+    tags: tags
     kv_enable_rbac: true
     kv_n: take('${take('prem-priv-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
     kv_sku: 'premium'
-    kv_enable_public_access: 'disabled'
+    kv_enable_public_access: false
     snet_kv_pe_id: vnetApp.properties.subnets[0].id
     pdnsz_kv_id: pdnsz.id
   }

@@ -23,12 +23,8 @@ param kv_sku string
 @description('Enable RBAC')
 param kv_enable_rbac bool
 
-@allowed([
-  'disabled'
-  'enabled'
-])
 @description('Enable public network access')
-param kv_enable_public_access string = 'enabled'
+param kv_enable_public_access bool = true
 
 @description('subnet ID to Enable App Private Endpoints Connections')
 param snet_kv_pe_id string = ''
@@ -82,6 +78,7 @@ resource zoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2020
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: kv_n
   location: location
+  tags: tags
   properties: {
     enableRbacAuthorization: kv_enable_rbac
     sku: {
@@ -90,9 +87,14 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
     }
     tenantId: subscription().tenantId
     accessPolicies: []
-    publicNetworkAccess: kv_enable_public_access
+    publicNetworkAccess: kv_enable_public_access ? 'enabled' : 'disabled'
+    networkAcls: {
+      defaultAction: kv_enable_public_access ? 'allow' : 'deny'
+      bypass: 'AzureServices'
+      ipRules: []
+      virtualNetworkRules: []
+    }
   }
-  tags: tags
 }
 
 output id string = keyVault.id
