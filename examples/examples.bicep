@@ -113,7 +113,7 @@ module kvPremiumPrivateRBAC'../main.bicep' = {
 // ------------------------------------------------------------------------------------------------
 var subnets = [
   {
-    name: 'snet-pe-azure-bicep-app-service'
+    name: 'snet-pe'
     subnetPrefix: '192.160.0.0/24'
     privateEndpointNetworkPolicies: 'Disabled'
     delegations: []
@@ -121,7 +121,7 @@ var subnets = [
 ]
 
 resource vnetApp 'Microsoft.Network/virtualNetworks@2021-02-01' = {
-  name: 'vnet-azure-bicep-app-service'
+  name: 'vnet-kv-bicep'
   location: location
   tags: tags
   properties: {
