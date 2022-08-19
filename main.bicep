@@ -82,6 +82,7 @@ resource zoneGroup 'Microsoft.Network/privateEndpoints/privateDnsZoneGroups@2020
 resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
   name: kv_n
   location: location
+  tags: tags
   properties: {
     enableRbacAuthorization: kv_enable_rbac
     sku: {
@@ -92,7 +93,6 @@ resource keyVault 'Microsoft.KeyVault/vaults@2021-10-01' = {
     accessPolicies: []
     publicNetworkAccess: kv_enable_public_access
   }
-  tags: tags
 }
 
 output id string = keyVault.id
