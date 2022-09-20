@@ -20,6 +20,14 @@ az deployment group create \
 --template-file examples/examples.bicep
 ```
 
+## Locally Resolve PE
+
+```bash
+# modify hosts C:\Windows\System32\drivers\etc
+# Add Private Endpoint IP with kv url
+###.###.10.90        <kv_n>.vaultcore.azure.net
+```
+
 ## Delete and Purge KeyVaults
 
 | :warning: | Delete all resources (mainly kv) nn the rg |
@@ -49,4 +57,11 @@ do
 done
 ```
 
+## Additional Resources
+
+- Key Vault
+- PE
+- [MS | Docs | Integrate Key Vault with Azure Private Link][2]
+
 [1]: ./examples/examples.bicep
+[2]: https://learn.microsoft.com/en-us/azure/key-vault/general/private-link-service
