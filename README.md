@@ -23,9 +23,9 @@ az deployment group create \
 ## Locally Resolve PE
 
 ```bash
-# modify hosts C:\Windows\System32\drivers\etc
+# modify hosts C:\Windows\System32\drivers\etc\hosts
 # Add Private Endpoint IP with kv url
-###.###.10.90        <kv_n>.vaultcore.azure.net
+nnn.nnn.10.90        <kv_n>.vault.azure.net
 ```
 
 ## Delete and Purge KeyVaults
