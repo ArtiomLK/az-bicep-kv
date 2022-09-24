@@ -1,6 +1,6 @@
 # Azure Key Vault
 
-[![DEV - Deploy Azure Resource](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml)
+[![DEV - Deploy Examples](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml)
 
 [Reference examples][1]
 
@@ -23,9 +23,9 @@ az deployment group create \
 ## Locally Resolve PE
 
 ```bash
-# modify hosts C:\Windows\System32\drivers\etc
+# modify hosts C:\Windows\System32\drivers\etc\hosts
 # Add Private Endpoint IP with kv url
-###.###.10.90        <kv_n>.vaultcore.azure.net
+nnn.nnn.10.90        <kv_n>.vault.azure.net
 ```
 
 ## Delete and Purge KeyVaults
