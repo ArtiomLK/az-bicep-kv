@@ -57,11 +57,18 @@ do
 done
 ```
 
+## Monitoring Dashboards
+
+- [Key Vault Insights][3]
+
 ## Additional Resources
 
 - Key Vault
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
+- Monitoring
+- [MS | Docs | Monitoring your key vault service with Key Vault insights][3]
 
 [1]: ./examples/examples.bicep
 [2]: https://learn.microsoft.com/en-us/azure/key-vault/general/private-link-service
+[3]: https://learn.microsoft.com/en-us/azure/key-vault/key-vault-insights-overview
