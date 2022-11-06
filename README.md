@@ -60,6 +60,8 @@ done
 ## Monitoring Dashboards
 
 - [Key Vault Insights][3]
+  - KV -> Insights
+  - Monitor -> Key Vaults
 
 ## Additional Resources
 
