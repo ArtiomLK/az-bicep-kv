@@ -1,6 +1,8 @@
 # Azure Key Vault
 
 [![DEV - Deploy Azure Resource](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/dev.orchestrator.yml)
+[![Public Key Vault](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/kv-public.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/kv-public.yml)
+[![Private Key Vault](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/kv-private.yml/badge.svg?branch=main&event=push)](https://github.com/ArtiomLK/azure-bicep-key-vault/actions/workflows/kv-private.yml)
 
 [Reference examples][1]
 
