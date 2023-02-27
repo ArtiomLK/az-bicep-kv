@@ -12,9 +12,9 @@ param location string = resourceGroup().location
 // ------------------------------------------------------------------------------------------------
 // Deployment requirements
 // ------------------------------------------------------------------------------------------------
-// '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-vwan-eastus/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net'
+// '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net'
 param pdnsz_id string = ''
-// '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-vwan-eastus/providers/Microsoft.Network/virtualNetworks/vnet-ado-self-hosted-agents-dev/subnets/snet-pe'
+// '/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>'
 param snet_id string = ''
 
 resource pdnsz 'Microsoft.Network/privateDnsZones@2020-06-01' = if(empty(pdnsz_id)) {
