@@ -9,7 +9,7 @@ on:
 env:
   RG_N: rg-azure-bicep-key-vault-demo
 
-name: Public Key Vault
+name: Private Key Vault
 jobs:
   deploy_to_dev:
     runs-on: ubuntu-latest
@@ -30,5 +30,5 @@ jobs:
         scope: resourcegroup
         resourceGroupName: ${{ env.RG_N }}
         deploymentMode: Incremental
-        template: examples/kv-example.bicep
+        template: examples/kv-pe-example.bicep
         failOnStdErr: true
