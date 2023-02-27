@@ -1,8 +1,11 @@
 on:
   workflow_dispatch: {}
   push:
-    paths-ignore:
-      - '**.md'
+    paths:
+      - '!**.md'
+      - '.github/**'
+      - 'examples/examples.bicep'
+      - 'main.bicep'
 env:
   ACR_MODULE_N: kv
   RG_N: rg-azure-bicep-key-vault

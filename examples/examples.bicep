@@ -8,7 +8,7 @@ var tags = {
   env: 'dev'
 }
 
-param location string = 'eastus2'
+param location string = resourceGroup().location
 
 // ------------------------------------------------------------------------------------------------
 // KeyVault Deployment Examples
