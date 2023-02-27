@@ -7,17 +7,56 @@
 ## Locally test Azure Bicep Modules
 
 ```bash
+sub_id="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";        echo $sub_id
+rg_n="rg-azure-bicep-key-vault-demo";                 echo $rg_n
+l="eastus2";                                          echo $l
+tags="env=dev project=bicephub";                      echo $tags
+
 # Create an Azure Resource Group
 az group create \
---name 'rg-azure-bicep-resource' \
---location 'eastus2' \
---tags project=bicephub env=dev
+--subscription $sub_id \
+--name $rg_n \
+--location $l \
+--tags $tags
 
-# Deploy Sample Modules
+# Deploy Examples
 az deployment group create \
---resource-group 'rg-azure-bicep-resource' \
---mode Complete \
+--subscription $sub_id \
+--resource-group $rg_n \
+--name "deployment-azure-bicep-key-vault" \
+--mode Incremental \
 --template-file examples/examples.bicep
+
+# ------------------------------------------------------------------------------------------------
+# Deploy Samples
+# ------------------------------------------------------------------------------------------------
+# Public kv
+az deployment group create \
+--subscription $sub_id \
+--resource-group $rg_n \
+--name "deployment-azure-bicep-key-vault-pub" \
+--mode Incremental \
+--template-file examples/kv-example.bicep
+
+# Private kv - Default values
+az deployment group create \
+--subscription $sub_id \
+--resource-group $rg_n \
+--name "deployment-azure-bicep-key-vault-priv" \
+--mode Incremental \
+--template-file examples/kv-pe-example.bicep
+
+# Private kv - Custom parameters
+export MSYS_NO_PATHCONV=1
+az deployment group create \
+--subscription $sub_id \
+--resource-group $rg_n \
+--name "deployment-azure-bicep-key-vault-priv-custom" \
+--mode Incremental \
+--template-file examples/kv-pe-example.bicep \
+--parameters \
+  pdnsz_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net" \
+  snet_id="/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
 ```
 
 ## Locally Resolve PE
