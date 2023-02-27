@@ -61,6 +61,76 @@ az deployment group create \
   snet_id="/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
 ```
 
+## Allow user to create secrets IF using RBAC
+
+```bash
+kv_n="kv-name";                                  echo $kv_n
+
+# get user name
+USER_N=$(az account show --query "user.name" -o tsv); echo $USER_N
+# Get kv resource id
+KV_ID=$(az keyvault show --name $kv_n --query "id" -o tsv); echo $KV_ID
+
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-administrator
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Administrator" \
+--scope $KV_ID
+
+# Secrets
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-secrets-officer
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Secrets Officer" \
+--scope $KV_ID
+
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-secrets-user
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Secrets User" \
+--scope $KV_ID
+
+# Certificates
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-certificates-officer
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Certificates Officer" \
+--scope $KV_ID
+
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-reader
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Reader" \
+--scope $KV_ID
+
+# Keys
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-crypto-officer
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Crypto Officer" \
+--scope $KV_ID
+
+# https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-crypto-user
+az role assignment create \
+--assignee $USER_N \
+--role "Key Vault Crypto User" \
+--scope $KV_ID
+
+# ---
+# add sample secret to the KV
+# ---
+az keyvault secret set --vault-name $kv_n --name "kv-secret-1" --value "kv-secret-1-value"
+az keyvault secret set --vault-name $kv_n --name "kv-secret-2" --value "kv-secret-2-value"
+az keyvault certificate create --vault-name $kv_n --name "MyCert" --policy "$(az keyvault certificate get-default-policy)"
+az keyvault key create --vault-name $kv_n --name "MyKey" --protection software
+
+# retrieve secrets from KV
+az keyvault secret show --vault-name $kv_n --name "kv-secret-1" --query "value"
+az keyvault secret show --vault-name $kv_n --name "kv-secret-2" --query "value"
+az keyvault certificate show --vault-name $kv_n --name "MyCert" --query "cer"
+az keyvault key show --vault-name $kv_n --name "MyKey" --query "key.n"
+```
+
 ## Locally Resolve PE
 
 ```bash
