@@ -48,7 +48,7 @@ az deployment group create \
 --mode Incremental \
 --template-file examples/kv-pe-example.bicep
 
-# Private kv - Custom parameters (pdnsz and snet)
+# Private kv - Custom parameters (pdnsz_id and snet_id)
 export MSYS_NO_PATHCONV=1
 az deployment group create \
 --subscription $sub_id \
@@ -60,7 +60,7 @@ az deployment group create \
   pdnsz_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net" \
   snet_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
 
-# Private kv - Custom parameters (vnet)
+# Private kv - Custom parameters (vnet and pdnsz_id)
 export MSYS_NO_PATHCONV=1
 
 az deployment group create \
