@@ -60,7 +60,7 @@ az deployment group create \
   pdnsz_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net" \
   snet_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
 
-# Private kv - Custom parameters (vnet and pdnsz_id)
+# Private kv - Custom parameters (kv_n, vnet and pdnsz_id)
 export MSYS_NO_PATHCONV=1
 
 az deployment group create \
@@ -70,6 +70,7 @@ az deployment group create \
 --mode Incremental \
 --template-file examples/kv-pe-example.bicep \
 --parameters \
+  kv_n="kv-ado-dev-eastus2" \
   vnet_n="vnet-kv-ado-self-hosted-agents-dev-eastus2" \
   vnet_address="100.100.0.0/24" \
   snet_pe_address="100.100.0.240/28" \
