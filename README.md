@@ -48,7 +48,7 @@ az deployment group create \
 --mode Incremental \
 --template-file examples/kv-pe-example.bicep
 
-# Private kv - Custom parameters
+# Private kv - Custom parameters (pdnsz_id and snet_id)
 export MSYS_NO_PATHCONV=1
 az deployment group create \
 --subscription $sub_id \
@@ -58,7 +58,22 @@ az deployment group create \
 --template-file examples/kv-pe-example.bicep \
 --parameters \
   pdnsz_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net" \
-  snet_id="/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
+  snet_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>"
+
+# Private kv - Custom parameters (vnet and pdnsz_id)
+export MSYS_NO_PATHCONV=1
+
+az deployment group create \
+--subscription $sub_id \
+--resource-group $rg_n \
+--name "deployment-azure-bicep-key-vault-priv-custom" \
+--mode Incremental \
+--template-file examples/kv-pe-example.bicep \
+--parameters \
+  vnet_n="vnet-kv-ado-self-hosted-agents-dev-eastus2" \
+  vnet_address="100.100.0.0/24" \
+  snet_pe_address="100.100.0.240/28" \
+  pdnsz_id="/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-alz-pdnsz/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net"
 ```
 
 ## Allow user to create secrets IF using RBAC
