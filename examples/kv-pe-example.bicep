@@ -2,7 +2,7 @@ targetScope = 'resourceGroup'
 // ------------------------------------------------------------------------------------------------
 // Deployment parameters
 // ------------------------------------------------------------------------------------------------
-var tags = {
+param tags object = {
   project: 'bicephub'
   env: 'dev'
 }
@@ -16,6 +16,9 @@ param location string = resourceGroup().location
 param pdnsz_id string = ''
 // '/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>'
 param snet_id string = ''
+param vnet_n string = 'vnet-kv-ado-self-hosted-agents-${tags.env}-${location}'
+param vnet_address string = '100.100.0.0/24'
+param snet_pe_address string = '100.100.0.0/24'
 
 resource pdnsz 'Microsoft.Network/privateDnsZones@2020-06-01' = if(empty(pdnsz_id)) {
   name: 'privatelink.vaultcore.azure.net'
@@ -26,20 +29,20 @@ resource pdnsz 'Microsoft.Network/privateDnsZones@2020-06-01' = if(empty(pdnsz_i
 var subnets = [
   {
     name: 'snet-pe'
-    subnetPrefix: '100.100.0.0/24'
+    subnetPrefix: snet_pe_address
     privateEndpointNetworkPolicies: 'Disabled'
     delegations: []
   }
 ]
 
 resource vnetApp 'Microsoft.Network/virtualNetworks@2021-02-01' = if(empty(snet_id)) {
-  name: 'vnet-kv-bicep'
+  name: vnet_n
   location: location
   tags: tags
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '100.100.0.0/23'
+        vnet_address
       ]
     }
     subnets: [for subnet in subnets: {
