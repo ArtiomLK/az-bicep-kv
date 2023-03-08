@@ -12,6 +12,7 @@ param location string = resourceGroup().location
 // ------------------------------------------------------------------------------------------------
 // Deployment requirements
 // ------------------------------------------------------------------------------------------------
+param kv_n string = take('${take('kv-stand-priv-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
 // '/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/<rg-name>/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net'
 param pdnsz_id string = ''
 // '/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>'
@@ -60,12 +61,12 @@ resource vnetApp 'Microsoft.Network/virtualNetworks@2021-02-01' = if(empty(snet_
 // Private Private Endpoint
 // ------------------------------------------------------------------------------------------------
 module kvStandardPrivatePeRBAC '../main.bicep' = {
-  name: 'kv-stand-priv-pe-rbac'
+  name: '${kv_n}-deployment'
   params: {
     location: location
     tags: tags
     kv_enable_rbac: true
-    kv_n: take('${take('kv-stand-priv-pe-rbac-', 23)}${replace(guid(subscription().id, resourceGroup().id, tags.env), '-', '')}', 24)
+    kv_n: kv_n
     kv_sku: 'standard'
     kv_enable_public_access: false
     snet_kv_pe_id: empty(snet_id) ? vnetApp.properties.subnets[0].id : snet_id
