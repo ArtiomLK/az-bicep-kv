@@ -18,7 +18,7 @@ param pdnsz_id string = ''
 param snet_id string = ''
 param vnet_n string = 'vnet-kv-ado-self-hosted-agents-${tags.env}-${location}'
 param vnet_address string = '100.100.0.0/24'
-param snet_pe_address string = '100.100.0.0/24'
+param snet_pe_address string = '100.100.0.240/28'
 
 resource pdnsz 'Microsoft.Network/privateDnsZones@2020-06-01' = if(empty(pdnsz_id)) {
   name: 'privatelink.vaultcore.azure.net'
