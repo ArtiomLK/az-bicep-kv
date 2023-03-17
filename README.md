@@ -221,7 +221,11 @@ done
 
 ## PIM
 
-![PIM - Service Principal to KV)](assets/pim-kv-sp.png)
+- Service Principal to KV with PIM
+  ![PIM - Service Principal to KV)](assets/pim-kv-sp.png)
+
+- User Managed Identity to KV with PIM
+  ![PIM - Managed Identity to KV)](assets/pim-kv-sp.png)
 
 ## Additional Resources
 
