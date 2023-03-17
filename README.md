@@ -219,6 +219,10 @@ done
   - KV -> Insights
   - Monitor -> Key Vaults
 
+## PIM
+
+![PIM - Service Principal to KV)](assets/pim-kv-sp.png)
+
 ## Additional Resources
 
 - Key Vault
