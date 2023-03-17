@@ -6,6 +6,11 @@
 
 [Reference examples][1]
 
+## Built in Roles
+
+- [MS | Docs | Data Plane | Azure built-in roles for Key Vault data plane operations][5]
+- [MS | Docs | Management Plane | Key vault Contributor][6]
+
 ## Locally test Azure Bicep Modules
 
 ```bash
@@ -200,6 +205,8 @@ done
 
 - Key Vault
 - [MS | Docs | Best practices for using Azure Key Vault][4]
+- [MS | Docs | Azure built-in roles for Key Vault data plane operations][5]
+- [MS | Docs | Management Plane | Key vault Contributor][6]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
 - Monitoring
@@ -209,3 +216,5 @@ done
 [2]: https://learn.microsoft.com/en-us/azure/key-vault/general/private-link-service
 [3]: https://learn.microsoft.com/en-us/azure/key-vault/key-vault-insights-overview
 [4]: https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices
+[5]: https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations
+[6]: https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-contributor
