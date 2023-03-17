@@ -18,10 +18,11 @@ jobs:
     environment: dev
     steps:
       # Checkout code
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
       # Log into Azure
-    - uses: azure/login@v1
+    - name: Login to Azure
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
@@ -30,11 +31,22 @@ jobs:
       with:
         az_rg_n: ${{ env.RG_N }}
 
-      # Deploy Resource to ACR
-    - uses: azure/docker-login@v1
+    - name: Build bicep module
+      uses: Azure/bicep-build-action@v1.0.0
       with:
+        bicepFilePath: main.bicep
+
+    - name: Login to ACR
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_LOGIN_SERVER }}
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
-    - run: |
-        az bicep build --file main.bicep
-        az bicep publish --file main.bicep --target br:${{ secrets.ACR_LOGIN_SERVER }}/bicep/modules/$ACR_MODULE_N:${{ github.sha }}
+
+    - name: Publish bicep module to ACR
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.37.0
+        inlineScript: |
+          az bicep publish --file main.bicep --target br:${{ secrets.ACR_LOGIN_SERVER }}/bicep/modules/$ACR_MODULE_N:${{ github.sha }}
+
