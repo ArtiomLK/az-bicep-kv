@@ -230,10 +230,6 @@ done
 ## Additional Resources
 
 - Key Vault
-- [MS | Docs | Authentication in Azure Key Vault][8]
-- [MS | Docs | Azure built-in roles for Key Vault data plane operations][5]
-- [MS | Docs | Management Plane | Key vault Contributor][6]
-- [MS | Docs | Assign a Key Vault access policy][7]
 - [MS | Docs | Best practices for using Azure Key Vault][4]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
