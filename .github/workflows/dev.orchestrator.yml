@@ -42,6 +42,4 @@ jobs:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     - run: |
-        az bicep version
-        ls
         az bicep publish --file main.bicep --target br:${{ secrets.ACR_LOGIN_SERVER }}/bicep/modules/$ACR_MODULE_N:${{ github.sha }} --verbose
