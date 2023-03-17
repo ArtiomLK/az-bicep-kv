@@ -30,10 +30,10 @@ jobs:
       with:
         az_rg_n: ${{ env.RG_N }}
 
-  - name: Bicep Build
-    uses: Azure/bicep-build-action@v1.0.0
-    with:
-      bicepFilePath: main.bicep
+    - name: Bicep Build
+      uses: Azure/bicep-build-action@v1.0.0
+      with:
+        bicepFilePath: main.bicep
 
       # Deploy Resource to ACR
     - uses: azure/docker-login@v1
