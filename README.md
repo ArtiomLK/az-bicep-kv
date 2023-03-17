@@ -18,7 +18,8 @@
 - Vault Access Policies
   - [MS | Docs | Assign a Key Vault access policy][7]
 - Network Security
-  - [MS | Docs | Configure Azure Key Vault firewalls and virtual networks][8]
+  - [MS | Docs | Configure Azure Key Vault firewalls and virtual networks][14]
+  - [MS | Docs | TLS and HTTPS][14]
 - Backup and restore behavior
   - [MS | Docs | Backup and restore behavior][9]
   - [MS | Docs | Backup and recovery][12]
@@ -243,3 +244,5 @@ done
 [11]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#conditional-access
 [12]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#backup-and-recovery
 [13]: https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/key-vault-security-baseline
+[14]: https://learn.microsoft.com/en-us/azure/key-vault/general/network-security
+[15]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#tls-and-https
