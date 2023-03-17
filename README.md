@@ -199,6 +199,7 @@ done
 ## Additional Resources
 
 - Key Vault
+- [MS | Docs | Best practices for using Azure Key Vault][4]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
 - Monitoring
@@ -207,3 +208,4 @@ done
 [1]: ./examples/examples.bicep
 [2]: https://learn.microsoft.com/en-us/azure/key-vault/general/private-link-service
 [3]: https://learn.microsoft.com/en-us/azure/key-vault/key-vault-insights-overview
+[4]: https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices
