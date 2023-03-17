@@ -30,12 +30,15 @@ jobs:
       with:
         az_rg_n: ${{ env.RG_N }}
 
+  - name: Bicep Build
+    uses: Azure/bicep-build-action@v1.0.0
+    with:
+      bicepFilePath: main.bicep
+
       # Deploy Resource to ACR
     - uses: azure/docker-login@v1
       with:
         username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
     - run: |
-        ls
-        az bicep build --file main.bicep
         az bicep publish --file main.bicep --target br:${{ secrets.ACR_LOGIN_SERVER }}/bicep/modules/$ACR_MODULE_N:${{ github.sha }}
