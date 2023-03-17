@@ -6,10 +6,26 @@
 
 [Reference examples][1]
 
-## Built in Roles
+## Azure Key Vault Security
 
-- [MS | Docs | Data Plane | Azure built-in roles for Key Vault data plane operations][5]
-- [MS | Docs | Management Plane | Key vault Contributor][6]
+- Azure Key Vault Authentication
+  - [MS | Docs | Authentication in Azure Key Vault][8]
+  - [MS | Docs | Conditional access][11]
+- Azure Key Vault Authorization
+  - RBAC
+    - [MS | Docs | Data Plane | Azure built-in roles for Key Vault data plane operations][5]
+    - [MS | Docs | Management Plane | Key vault Contributor][6]
+- Vault Access Policies
+  - [MS | Docs | Assign a Key Vault access policy][7]
+- Network Security
+  - [MS | Docs | Configure Azure Key Vault firewalls and virtual networks][8]
+- Backup and restore behavior
+  - [MS | Docs | Backup and restore behavior][9]
+  - [MS | Docs | Backup and recovery][12]
+- Azure Policy Regulatory Compliance controls for Azure Key Vault
+  - [MS | Docs | Azure Policy Regulatory Compliance controls for Azure Key Vault][10]
+- Azure security baseline for Key Vault
+  - [MS | Docs | Azure security baseline for Key Vault][13]
 
 ## Locally test Azure Bicep Modules
 
@@ -204,9 +220,11 @@ done
 ## Additional Resources
 
 - Key Vault
-- [MS | Docs | Best practices for using Azure Key Vault][4]
+- [MS | Docs | Authentication in Azure Key Vault][8]
 - [MS | Docs | Azure built-in roles for Key Vault data plane operations][5]
 - [MS | Docs | Management Plane | Key vault Contributor][6]
+- [MS | Docs | Assign a Key Vault access policy][7]
+- [MS | Docs | Best practices for using Azure Key Vault][4]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
 - Monitoring
@@ -218,3 +236,10 @@ done
 [4]: https://learn.microsoft.com/en-us/azure/key-vault/general/best-practices
 [5]: https://learn.microsoft.com/en-us/azure/key-vault/general/rbac-guide?tabs=azure-cli#azure-built-in-roles-for-key-vault-data-plane-operations
 [6]: https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#key-vault-contributor
+[7]: https://learn.microsoft.com/en-us/azure/key-vault/general/assign-access-policy
+[8]: https://learn.microsoft.com/en-us/azure/key-vault/general/authentication
+[9]: https://learn.microsoft.com/en-us/azure/key-vault/general/overview-security-worlds#backup-and-restore-behavior
+[10]: https://learn.microsoft.com/en-us/azure/key-vault/security-controls-policy
+[11]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#conditional-access
+[12]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#backup-and-recovery
+[13]: https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/key-vault-security-baseline
