@@ -26,6 +26,8 @@
   - [MS | Docs | Backup and recovery][12]
 - Azure Policy Regulatory Compliance controls for Azure Key Vault
   - [MS | Docs | Azure Policy Regulatory Compliance controls for Azure Key Vault][10]
+- Microsoft Defender for Key Vault
+  - [MS | Docs | Overview of Microsoft Defender for Key Vault][17]
 - Azure security baseline for Key Vault
   - [MS | Docs | Azure security baseline for Key Vault][13]
 
@@ -252,3 +254,4 @@ done
 [14]: https://learn.microsoft.com/en-us/azure/key-vault/general/network-security
 [15]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#tls-and-https
 [16]: https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/key-vault-security-baseline#network-security-group-support
+[17]: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-key-vault-introduction
