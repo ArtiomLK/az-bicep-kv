@@ -28,7 +28,6 @@ jobs:
         echo ${{ env.TEST_BICEP_FILE_FILE }}
         echo ${{ env.ACR_MODULE_N }}
 
-jobs:
   call-workflow-passing-data:
     runs-on: ubuntu-latest
     steps:
