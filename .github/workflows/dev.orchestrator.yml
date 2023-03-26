@@ -27,16 +27,16 @@ jobs:
         echo ${{ env.MAIN_BICEP_FILE_PATH }}
         echo ${{ env.TEST_BICEP_FILE_FILE }}
         echo ${{ env.ACR_MODULE_N }}
-  call-workflow-passing-data:
-    uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
-    with:
-      ENVIRONMENT: ${{ env.ENVIRONMENT }}
-      RG_N: ${{ env.RG_N }}
-      MAIN_BICEP_FILE_PATH: ${{ env.MAIN_BICEP_FILE_PATH }}
-      TEST_BICEP_FILE_FILE: ${{ env.TEST_BICEP_FILE_FILE }}
-      ACR_MODULE_N: ${{ env.ACR_MODULE_N }}
-    secrets:
-      AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
-      ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
-      ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
-      ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
+  # call-workflow-passing-data:
+  #   uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
+  #   with:
+  #     ENVIRONMENT: ${{ env.ENVIRONMENT }}
+  #     RG_N: ${{ env.RG_N }}
+  #     MAIN_BICEP_FILE_PATH: ${{ env.MAIN_BICEP_FILE_PATH }}
+  #     TEST_BICEP_FILE_FILE: ${{ env.TEST_BICEP_FILE_FILE }}
+  #     ACR_MODULE_N: ${{ env.ACR_MODULE_N }}
+  #   secrets:
+  #     AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
+  #     ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
+  #     ACR_USERNAME: ${{ secrets.ACR_USERNAME }}
+  #     ACR_PASSWORD: ${{ secrets.ACR_PASSWORD }}
