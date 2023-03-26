@@ -14,10 +14,10 @@ jobs:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
       ENVIRONMENT: dev
+      ACR_MODULE_N: kv
       RG_N: rg-azure-bicep-key-vault
       MAIN_BICEP_FILE_PATH: main.bicep
       TEST_BICEP_FILE_FILE: examples/examples.bicep
-      ACR_MODULE_N: kv
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
