@@ -14,7 +14,7 @@ env:
 name: Deploy All Key Vault Examples
 jobs:
   call-workflow-passing-data:
-    uses: ArtiomLK/commands/.github/workflows/deploy-to-acr.yaml@gh-tempalte-deploy-to-acr
+    uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
       RG_N: ${{ env.RG_N }}
     secrets:
