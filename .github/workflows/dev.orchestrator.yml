@@ -20,11 +20,11 @@ jobs:
   call-workflow-passing-data:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
-      ENVIRONMENT: dev
-      RG_N: ${{ env.RG_N }}
-      MAIN_BICEP_FILE_PATH: ${{ env.MAIN_BICEP_FILE_PATH }}
-      TEST_BICEP_FILE_FILE: ${{ env.TEST_BICEP_FILE_FILE }}
-      ACR_MODULE_N: ${{ env.ACR_MODULE_N }}
+      ENVIRONMENT: $ENVIRONMENT
+      RG_N: $RG_N
+      MAIN_BICEP_FILE_PATH: $MAIN_BICEP_FILE_PATH
+      TEST_BICEP_FILE_FILE: $TEST_BICEP_FILE_FILE
+      ACR_MODULE_N: $ACR_MODULE_N
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
