@@ -17,6 +17,15 @@ env:
 
 name: Deploy All Key Vault Examples
 jobs:
+  test-vars:
+    steps:
+    - name: Use variables
+      run: |
+        echo "variable from shell environment : $ENVIRONMENT"
+        echo "variable from shell environment : $RG_N"
+        echo "variable from shell environment : $MAIN_BICEP_FILE_PATH"
+        echo "variable from shell environment : $TEST_BICEP_FILE_FILE"
+        echo "variable from shell environment : $ACR_MODULE_N"
   call-workflow-passing-data:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
