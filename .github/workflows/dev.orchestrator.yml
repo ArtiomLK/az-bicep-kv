@@ -18,6 +18,7 @@ env:
 name: Deploy All Key Vault Examples
 jobs:
   test-vars:
+    runs-on: ubuntu-latest
     steps:
     - name: Use variables
       run: |
