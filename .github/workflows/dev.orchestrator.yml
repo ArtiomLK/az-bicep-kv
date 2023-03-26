@@ -38,6 +38,5 @@ jobs:
 
     - name: Deploy bicep module to ACR
       uses: ArtiomLK/commands/.github/deploy-to-acr.yaml@gh-tempalte-deploy-to-acr
-      uses: owner-name/shared-repo-name/.github/workflows/my-shared-workflow.yml@main
       with:
         RG_N: ${{ env.RG_N }}
