@@ -16,7 +16,7 @@ jobs:
     environment: dev
     steps:
       # Checkout code
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
       # Log into Azure
     - uses: azure/login@v1
