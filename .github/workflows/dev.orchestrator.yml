@@ -3,7 +3,6 @@ on:
   push:
     paths:
       - '!**.md'
-      - '.github/actions/deploy-az-resource/action.yml'
       - '.github/workflows/dev.orchestrator.yml'
       - 'examples/examples.bicep'
       - 'main.bicep'
