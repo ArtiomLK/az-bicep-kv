@@ -10,7 +10,7 @@ on:
 
 name: Deploy All Key Vault Examples
 jobs:
-  call-workflow-passing-data:
+  deploy-bicep-module-to-acr:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
       ENVIRONMENT: dev
