@@ -23,10 +23,10 @@ jobs:
     - name: Use variables
       run: |
         echo ${{ env.ENVIRONMENT }}
-        echo ${{ $RG_N }}
-        echo ${{ $MAIN_BICEP_FILE_PATH }}
-        echo ${{ $TEST_BICEP_FILE_FILE }}
-        echo ${{ $ACR_MODULE_N }}
+        echo ${{ env.RG_N }}
+        echo ${{ env.MAIN_BICEP_FILE_PATH }}
+        echo ${{ env.TEST_BICEP_FILE_FILE }}
+        echo ${{ env.ACR_MODULE_N }}
   call-workflow-passing-data:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
