@@ -8,34 +8,16 @@ on:
       - 'examples/examples.bicep'
       - 'main.bicep'
 
-env:
-  ENVIRONMENT: dev
-  ACR_MODULE_N: kv
-  RG_N: rg-azure-bicep-key-vault
-  MAIN_BICEP_FILE_PATH: main.bicep
-  TEST_BICEP_FILE_FILE: examples/examples.bicep
-
 name: Deploy All Key Vault Examples
 jobs:
-  test-vars:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Use variables
-      run: |
-        echo ${{ env.ENVIRONMENT }}
-        echo ${{ env.RG_N }}
-        echo ${{ env.MAIN_BICEP_FILE_PATH }}
-        echo ${{ env.TEST_BICEP_FILE_FILE }}
-        echo ${{ env.ACR_MODULE_N }}
-
   call-workflow-passing-data:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@gh-tempalte-deploy-to-acr
     with:
-      ENVIRONMENT: ${{ env.ENVIRONMENT }}
-      RG_N: ${{ env.RG_N }}
-      MAIN_BICEP_FILE_PATH: ${{ env.MAIN_BICEP_FILE_PATH }}
-      TEST_BICEP_FILE_FILE: ${{ env.TEST_BICEP_FILE_FILE }}
-      ACR_MODULE_N: ${{ env.ACR_MODULE_N }}
+      ENVIRONMENT: dev
+      RG_N: rg-azure-bicep-key-vault
+      MAIN_BICEP_FILE_PATH: main.bicep
+      TEST_BICEP_FILE_FILE: examples/examples.bicep
+      ACR_MODULE_N: kv
     secrets:
       AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
       ACR_LOGIN_SERVER: ${{ secrets.ACR_LOGIN_SERVER }}
