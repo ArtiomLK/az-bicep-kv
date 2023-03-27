@@ -7,7 +7,7 @@ on:
       - 'examples/examples.bicep'
       - 'main.bicep'
 
-name: Deploy All Key Vault Examples
+name: Deploy Key Vault Examples
 jobs:
   deploy-bicep-module-to-acr:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@main
