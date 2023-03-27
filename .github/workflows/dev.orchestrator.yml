@@ -7,9 +7,9 @@ on:
       - 'examples/examples.bicep'
       - 'main.bicep'
 
-name: Deploy Key Vault Examples
+name: Deploy Bicep Modules to AZ and ACR
 jobs:
-  deploy-bicep-module-to-acr:
+  deploy-bicep-module-to-az-and-acr:
     uses: ArtiomLK/commands/.github/workflows/deploy-bicep-module-to-acr.yaml@main
     with:
       ENVIRONMENT: dev
