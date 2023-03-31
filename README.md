@@ -233,6 +233,13 @@ done
 
 - Key Vault
 - [MS | Docs | Best practices for using Azure Key Vault][4]
+- [MS | Docs | Azure Key Vault][18]
+- Keys
+- [MS | Docs | About keys][19]
+- Certificates
+- [MS | Docs | About Azure Key Vault certificates][20]
+- Secrets
+- [MS | Docs | About Azure Key Vault secrets][21]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
 - Monitoring
@@ -255,3 +262,7 @@ done
 [15]: https://learn.microsoft.com/en-us/azure/key-vault/general/security-features#tls-and-https
 [16]: https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/key-vault-security-baseline#network-security-group-support
 [17]: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-key-vault-introduction
+[18]: https://learn.microsoft.com/en-us/azure/key-vault/
+[19]: https://learn.microsoft.com/en-us/azure/key-vault/keys/about-keys
+[20]: https://learn.microsoft.com/en-us/azure/key-vault/certificates/about-certificates
+[21]: https://learn.microsoft.com/en-us/azure/key-vault/secrets/about-secrets
