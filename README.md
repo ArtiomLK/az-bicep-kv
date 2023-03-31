@@ -236,9 +236,9 @@ done
 - [MS | Docs | Azure Key Vault][18]
 - Keys
 - [MS | Docs | About keys][19]
-- Keys
+- Certificates
 - [MS | Docs | About Azure Key Vault certificates][20]
-- Keys
+- Secrets
 - [MS | Docs | About Azure Key Vault secrets][21]
 - PE
 - [MS | Docs | Integrate Key Vault with Azure Private Link][2]
