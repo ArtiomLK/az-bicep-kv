@@ -17,7 +17,7 @@ param kv_n string = take('${take('kv-stand-priv-pe-rbac-', 23)}${replace(guid(su
 param pdnsz_id string = ''
 // '/subscriptions/<xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>/resourceGroups/<rg-name>/rg-name>/providers/Microsoft.Network/virtualNetworks/<vnet-name>/subnets/<snet-pe>'
 param snet_id string = ''
-param vnet_n string = 'vnet-kv-ado-self-hosted-agents-${tags.env}-${location}'
+param vnet_n string = 'vnet-priv-kv-bicep-${tags.env}-${location}'
 param vnet_address string = '100.100.0.0/24'
 param snet_pe_address string = '100.100.0.240/28'
 

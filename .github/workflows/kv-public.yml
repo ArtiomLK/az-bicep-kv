@@ -7,7 +7,7 @@ on:
       - 'examples/kv-example.bicep'
       - 'main.bicep'
 env:
-  RG_N: rg-azure-bicep-key-vault-demo
+  RG_N: ${{ vars.RG_N }}
 
 name: Public Key Vault
 jobs:
