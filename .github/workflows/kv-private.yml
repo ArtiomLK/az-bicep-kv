@@ -6,14 +6,12 @@ on:
       - '.github/workflows/kv-private.yml'
       - 'examples/kv-pe-example.bicep'
       - 'main.bicep'
-env:
-  RG_N: ${{ vars.RG_N }}
 
 name: Private Key Vault
 jobs:
   deploy_to_dev:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: ${{ vars.ENVIRONMENT_STAGE }}
     steps:
       # Checkout code
     - uses: actions/checkout@v3
@@ -28,7 +26,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         scope: resourcegroup
-        resourceGroupName: ${{ env.RG_N }}
+        resourceGroupName: ${{ vars.RG_N }}
         deploymentMode: Incremental
         template: examples/kv-pe-example.bicep
         failOnStdErr: true
